@@ -11,6 +11,8 @@ URL:		https://pypi.org/project/sh/
 Source0:	https://github.com/amoffat/sh/archive/%{version}/%{module}-%{version}.tar.gz
 BuildArch:	noarch
 
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(wheel)
 %if %{with tests}
