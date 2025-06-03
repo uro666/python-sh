@@ -44,6 +44,7 @@ sed -i '1,3d;7,22d;' README.rst
 %py_install
 
 %if %{with tests}
+%check
 export CI=true
 export PYTHONPATH="%{buildroot}%{python_sitelib}:%{buildroot}%{python_sitelib}:${PWD}"
 
@@ -54,8 +55,8 @@ skiptests="test_environment"
 # https://github.com/amoffat/sh/blob/ea434f0bafd285bbe5b93d218e62227f2b77f310/sh.py#L88-L95
 export SH_TESTS_RUNNING=1
 # Run tests with both poll and select.
-SH_TESTS_USE_SELECT=0 %{__python} -m pytest -v -k "not (skiptests)"
-SH_TESTS_USE_SELECT=1 %{__python} -m pytest -v -k "not (skiptests)"
+SH_TESTS_USE_SELECT=0 %{__python} -m pytest -v -k "not ($skiptests)"
+SH_TESTS_USE_SELECT=1 %{__python} -m pytest -v -k "not ($skiptests)"
 %endif
 
 %files
