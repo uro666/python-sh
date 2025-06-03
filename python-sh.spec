@@ -50,6 +50,7 @@ export PYTHONPATH="%{buildroot}%{python_sitelib}:%{buildroot}%{python_sitelib}:$
 
 # These tests error on the abf but pass in local builds.
 skiptests="test_environment"
+skiptests+=" or test_fd_over_1024"
 
 # For the following env globals usage see:
 # https://github.com/amoffat/sh/blob/ea434f0bafd285bbe5b93d218e62227f2b77f310/sh.py#L88-L95
